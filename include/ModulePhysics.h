@@ -31,9 +31,11 @@ public:
 	
 	// Access to Box2D world
 	b2World* GetWorld() { return world; }
+	int scoreValue;
 
 private:
 
+	
 	bool debug;
 	b2World* world = nullptr;
 	b2MouseJoint* mouse_joint = nullptr;

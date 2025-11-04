@@ -37,7 +37,7 @@ bool ModuleGame::Start()
 	PhysBody* topWall = App->physics->CreateRectangle(SCREEN_WIDTH / 2, 10, SCREEN_WIDTH, 20, b2_staticBody);
 	
 	// Create ball
-	ball = App->physics->CreateCircle(SCREEN_WIDTH / 2, 100, 15, b2_dynamicBody);
+	ball = App->physics->CreateCircle(SCREEN_WIDTH / 2, 100, 12, b2_dynamicBody);
 	ball->listener = this;
 	
 	// TODO: Load ball texture from assets/balls folder
@@ -73,16 +73,16 @@ update_status ModuleGame::Update()
 	
 	// Draw score
 	DrawText(TextFormat("Score: %d", currentScore), 20, 20, 20, BLACK);
-	DrawText(TextFormat("Previous: %d", previousScore), 20, 50, 20, DARKGRAY);
-	DrawText(TextFormat("High Score: %d", highestScore), 20, 80, 20, DARKGREEN);
-	DrawText(TextFormat("Balls: %d", ballsRemaining), 20, 110, 20, RED);
+	DrawText(TextFormat("Previous: %d", previousScore), 20, 50, 20, GRAY);
+	DrawText(TextFormat("High Score: %d", highestScore), 20, 80, 20, WHITE);
+	DrawText(TextFormat("Lives: %d", ballsRemaining), 20, 110, 20, RED);
 	
 	// Draw ball
 	if(ball)
 	{
 		int x, y;
 		ball->GetPosition(x, y);
-		DrawCircle(x, y, 15, BLUE);
+		DrawCircle(x, y, 12, BLUE);
 	}
 	
 	return UPDATE_CONTINUE;

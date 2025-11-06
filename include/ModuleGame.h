@@ -8,8 +8,11 @@
 #include "raylib.h"
 #include <vector>
 
+#include "box2d/box2d.h" // Убедитесь, что путь к box2d корректен
+
 class PhysBody;
 class PhysicEntity;
+class b2RevoluteJoint; // Forward declaration, если не включён полный заголовок
 
 
 class ModuleGame : public Module
@@ -27,6 +30,7 @@ public:
 	// Ball
 	PhysBody* ball = nullptr;
 	Texture2D ballTexture;
+	Texture2D background;
 	
 	// Flippers
 	PhysBody* leftFlipper = nullptr;
@@ -44,4 +48,10 @@ public:
 	
 	// Fonts for UI
 	Font font;
+
+	// Launcher components
+	PhysBody* launcher = nullptr;         // The rectangle that pushes the ball
+	PhysBody* launcherPivot = nullptr;    // The static point to attach the joint
+	b2PrismaticJoint* launcherJoint = nullptr; // The joint connecting launcher to pivot
+	bool isLauncherPressed = false;      // Track if space is being held
 };

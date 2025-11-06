@@ -23,7 +23,7 @@ public:
 	PhysBody* CreateCircle(int x, int y, int radius, b2BodyType type = b2_dynamicBody);
 	PhysBody* CreateRectangle(int x, int y, int width, int height, b2BodyType type = b2_staticBody);
 	PhysBody* CreateRectangleSensor(int x, int y, int width, int height);
-	PhysBody* CreateChain(int x, int y, const int* points, int size, b2BodyType type = b2_staticBody);
+	PhysBody* CreateChain(int x, int y, const int* points, int size, b2BodyType type = b2_staticBody, int scoreValue = 0);
 	
 	// Collision callbacks from b2ContactListener
 	void BeginContact(b2Contact* contact) override;
@@ -31,11 +31,9 @@ public:
 	
 	// Access to Box2D world
 	b2World* GetWorld() { return world; }
-	int scoreValue;
 
 private:
 
-	
 	bool debug;
 	b2World* world = nullptr;
 	b2MouseJoint* mouse_joint = nullptr;
